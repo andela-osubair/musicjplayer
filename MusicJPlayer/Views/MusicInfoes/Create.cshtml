@@ -1,0 +1,134 @@
+﻿@model MusicJPlayer.Models.MusicInfo
+
+@{
+    ViewBag.Title = "Upload Music File";
+}
+
+
+
+@using (Html.BeginForm("Create", "MusicInfoes", null, FormMethod.Post, new { enctype = "multipart/form-data" })) 
+{
+    @Html.AntiForgeryToken()
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="fh5co-uppercase-heading-sm text-center">Upload Music File and Details</h2>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="fh5co-spacer fh5co-spacer-sm"></div>
+                </div>
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="form-horizontal">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control input-lg" } })
+                                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Artist, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Artist, new { htmlAttributes = new { @class = "form-control input-lg" } })
+                                    @Html.ValidationMessageFor(model => model.Artist, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.CoverArt, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <label class="btn btn-primary btn-lg btn-file" for="my-file-selector">
+                                        Browse <input id="my-file-selector" type="file" style="display: none;" name="upload" onchange="$('#upload-file-info').html($(this).val());" accept=".jpg, .png, .gif, .jpeg">
+                                    </label>
+                                    <span class='label label-info' id="upload-file-info"></span>
+                                    @*@Html.EditorFor(model => model.CoverArt, new { htmlAttributes = new { @class = "form-control input-lg" } })
+                                    @Html.ValidationMessageFor(model => model.CoverArt, "", new { @class = "text-danger" })*@
+                                    @*@Html.TextBoxFor(m => m.Dossier, new { type = "file" })
+                                    @Html.ValidationMessageFor(m => m.Dossier)*@
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Music File</label>
+                                <div class="col-md-10">
+                                    <input type="file" name="file" class="form-control input-lg" accept=".mp3" />
+                                </div>                                
+                            </div>
+                            @*<div class="form-group">
+                                <label class="btn btn-primary btn-lg btn-file">
+                                    Browse <input type="file" style="display: none;">
+                                </label>
+                            </div>*@
+                            @*<label class="btn btn-primary" for="my-file-selector">
+                                <input id="my-file-selector" type="file" style="display:none;" onchange="$('#upload-file-info').html($(this).val());">
+                                Button Text Here
+                            </label>
+                            <span class='label label-info' id="upload-file-info"></span>*@
+                        </div>
+                        
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control input-lg" } })
+                                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-primary btn-lg " value="Create">
+                                <input type="reset" class="btn btn-outline btn-lg " value="Reset">
+                            </div>
+                        </div>
+
+
+                        </div>
+                        <div class="fh5co-spacer fh5co-spacer-sm"></div>
+                    </div>
+
+                </div>
+            </div>
+    </section>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script src="@Url.Content("~/Scripts/jquery.blockUI.js")"></script>
+<script>
+    $(document).on('invalid-form.validate', 'form', function () {
+        var button = $(this).find('input[type="submit"]');
+        setTimeout(function () {
+            button.removeAttr('disabled');
+        }, 1);
+    });
+    $(document).on('submit', 'form', function () {
+        var button = $(this).find('input[type="submit"]');
+        setTimeout(function () {
+            button.attr('disabled', 'disabled');
+        }, 0);
+        $.blockUI({
+            message: '<h1>Uploading Please wait...</h1>',
+            css: {
+                border: 'none',
+                padding: '15px',
+                backgroundColor: '#000',
+                '-webkit-border-radius': '10px',
+                '-moz-border-radius': '10px',
+                opacity: .5,
+                color: '#fff'
+            }
+        });
+    });
+</script>
+
+}

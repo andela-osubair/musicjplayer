@@ -1,0 +1,191 @@
+﻿@using MvcHtmlHelpers
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+ <!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Music JPlayer</title>
+    <meta name="description" content="Music player usin jplayer plugin" />
+    <meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+    <meta name="author" content="FREEHTML5.CO" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <!-- Facebook and Twitter integration -->
+    <meta property="og:title" content="" />
+    <meta property="og:image" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:site_name" content="" />
+    <meta property="og:description" content="" />
+    <meta name="twitter:title" content="" />
+    <meta name="twitter:image" content="" />
+    <meta name="twitter:url" content="" />
+    <meta name="twitter:card" content="" />
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <!-- Google Webfont -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400|Crimson+Text' rel='stylesheet' type='text/css'>
+
+    <!-- Themify Icons -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/themify-icons.css")">
+    <!-- Bootstrap -->
+    @*<link rel="stylesheet" href="css/bootstrap.css">*@
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/owl.carousel.min.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/owl.theme.default.min.css")">
+    <!-- Magnific Popup -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/magnific-popup.css")">
+    <!-- Superfish -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/superfish.css")">
+    <!-- Easy Responsive Tabs -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/easy-responsive-tabs.css")">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/style.css")">
+
+    <!-- JPlayer css -->
+    <link href="@Url.Content("~/Content/jplayer.blue.monday.css")" rel="stylesheet" />
+
+
+    <!-- FOR IE9 below -->
+    <!--[if lt IE 9]>
+    <script src="js/modernizr-2.6.2.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    
+</head>
+<body>
+    <!-- START #fh5co-header -->
+    <header id="fh5co-header-section" role="header" class="">
+        <div class="container">
+
+            <!-- START #fh5co-logo -->
+            <h1 id="fh5co-logo" class="pull-left"><a href="index.html">Display</a></h1>
+
+            <!-- START #fh5co-menu-wrap -->
+            <nav id="fh5co-menu-wrap" role="navigation">
+                <ul class="sf-menu" id="fh5co-primary-menu">
+                    <li>
+                    @Html.MenuLink("Home", "Index", "Home")
+                    </li>
+                    @*<li>
+                        <a href="#" class="fh5co-sub-ddown">Dropdown</a>
+                        <ul class="fh5co-sub-menu">
+                            <li><a href="left-sidebar.html">Left Sidebar</a></li>
+                            <li><a href="right-sidebar.html">Right Sidebar</a></li>
+                            <li><a href="#">HTML5</a></li>
+                            <li>
+                                <a href="#" class="fh5co-sub-ddown">JavaScript</a>
+                                <ul class="fh5co-sub-menu">
+                                    <li><a href="#">jQuery</a></li>
+                                    <li><a href="#">Zipto</a></li>
+                                    <li><a href="#">Node.js</a></li>
+                                    <li><a href="#">AngularJS</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">CSS3</a></li>
+                        </ul>
+                    </li>*@
+                    <li>@Html.MenuLink("Upload Music", "Create", "MusicInfoes")</li>
+                    <li><a href="#">Contact</a></li>
+                    @Html.Partial("_LoginPartial")
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- START #fh5co-hero -->
+    <aside id="fh5co-hero" style="background-image: url(/images/hero4.jpg);">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="fh5co-hero-wrap">
+                        <div class="fh5co-hero-intro">
+                            <h2>Music JPlayer<span></span></h2>
+                            <h1>@ViewBag.Title</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <div id="fh5co-main">
+        @RenderBody()
+        
+        <footer id="fh5co-footer">
+            <div class="container">
+
+                <ul class="fh5co-social-icons">
+                    <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
+                    <li><a href="#"><i class="ti-facebook"></i></a></li>
+                    <li><a href="#"><i class="ti-github"></i></a></li>
+                    <li><a href="#"><i class="ti-linkedin"></i></a></li>
+                </ul>
+                <p class="text-muted fh5co-no-margin-bottom text-center"><small>&copy; 2015 <a href="#">Display</a>. All rights reserved. Crafted with love <em>by</em> <a href="http://freehtml5.co" target="_blank">FREEHTML5.co</a> <br> Images by <a href="http://unsplash.com/" target="_blank">Unsplash</a></small></p>
+            </div>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <!-- jQuery -->
+    @*<script src="@Url.Content("~/Scripts/jquery-1.10.2.min.js")"></script>*@
+    <!-- jQuery Easing -->
+    <script src="@Url.Content("~/Scripts/jquery.easing.1.3.js")"></script>
+    <!-- Bootstrap -->
+    @*<script src="@Url.Content("~/Scripts/bootstrap.js")"></script>*@
+    <!-- Owl carousel -->
+    <script src="@Url.Content("~/Scripts/owl.carousel.min.js")"></script>
+    <!-- Magnific Popup -->
+    <script src="@Url.Content("~/Scripts/jquery.magnific-popup.min.js")"></script>
+    <!-- Superfish -->
+    <script src="@Url.Content("~/Scripts/hoverIntent.js")"></script>
+    <script src="@Url.Content("~/Scripts/superfish.js")"></script>
+    <!-- Easy Responsive Tabs -->
+    <script src="@Url.Content("~/Scripts/easyResponsiveTabs.js")"></script>
+    <!-- FastClick for Mobile/Tablets -->
+    <script src="@Url.Content("~/Scripts/fastclick.js")"></script>
+    <!-- Main JS -->
+    <script src="@Url.Content("~/Scripts/main.js")"></script>
+    <!-- JPlayer JS -->
+    @*<script src="@Url.Content("~/Scripts/jquery.jplayer.js")"></script>
+    <script src="@Url.Content("~/Scripts/jplayer.playlist.js")"></script>*@
+
+    <script src="@Url.Content("~/Scripts/jquery.blockUI.js")"></script>
+    <script>
+        (function ($) {
+
+        })(jQuery);
+        $(document).on('invalid-form.validate', 'form', function () {
+            var button = $(this).find('input[type="submit"]');
+            setTimeout(function () {
+                button.removeAttr('disabled');
+            }, 1);
+        });
+        $(document).on('submit', 'form', function () {
+            var button = $(this).find('input[type="submit"]');
+            setTimeout(function () {
+                button.attr('disabled', 'disabled');
+            }, 0);
+            $.blockUI({
+                message: '<h1>Please wait...</h1>',
+                css: {
+                    border: 'none',
+                    padding: '15px',
+                    backgroundColor: '#000',
+                    '-webkit-border-radius': '10px',
+                    '-moz-border-radius': '10px',
+                    opacity: .5,
+                    color: '#fff'
+                }
+            });
+        });
+    </script>
+</body>
+</html>
